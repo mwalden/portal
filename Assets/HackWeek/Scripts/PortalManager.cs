@@ -12,13 +12,20 @@ public class PortalManager : MonoBehaviour
     public Text text;
     public Text distance;
     public Material[] sponzaMaterials;
-    public bool insideBuilding;
-    public bool colliderExited;
+    public List<Material> wallMaterials;
+    public GameObject[] walls;
+    public GameObject  crowd;
     public bool enabledCalled;
     // Start is called before the first frame update
     void Start()
     {
         sponzaMaterials = sponza.GetComponent<Renderer>().sharedMaterials;
+        foreach (GameObject go in walls)
+        {
+            Material[] material = go.GetComponent<Renderer>().sharedMaterials;
+            wallMaterials.AddRange(material);
+        }
+
     }
 
     private void Update()
@@ -30,20 +37,26 @@ public class PortalManager : MonoBehaviour
     private void OnEnable()
     {
         sponzaMaterials = sponza.GetComponent<Renderer>().sharedMaterials;
+
         for (int x = 0; x < sponzaMaterials.Length; x++)
         {
             enabledCalled = true;
             sponzaMaterials[x].SetInt("_StencilComp", 3);
         }
+
+        for (int x = 0; x < wallMaterials.Count; x++)
+        {
+            wallMaterials[x].SetInt("_StencilComp", 3);
+        }
+
+
+
     }
 
 
     private void OnTriggerEnter(Collider other)
     {
-        if (colliderExited)
-        {
             text.text = "Entered";
-        }
     }
 
     // Update is called once per frame
@@ -52,10 +65,17 @@ public class PortalManager : MonoBehaviour
         Vector3 camPositionInPortalSpace = transform.InverseTransformPoint(mainCamera.transform.position);
         if (camPositionInPortalSpace.y < .5f )
         {
+            if (!crowd.activeSelf)
+                crowd.SetActive(true);
             text.text = camPositionInPortalSpace.y + " :: setting to Always" + sponzaMaterials[0].GetInt("_StencilComp");
             //disable stencil test
             for (int x = 0; x < sponzaMaterials.Length;x++)
                 sponzaMaterials[x].SetInt("_StencilComp", (int)CompareFunction.Always);
+
+            for (int x = 0; x < wallMaterials.Count; x++)
+            {
+                wallMaterials[x].SetInt("_StencilComp", (int)CompareFunction.Always);
+            }
 
         }
         else
@@ -65,12 +85,15 @@ public class PortalManager : MonoBehaviour
             {
                 sponzaMaterials[x].SetInt("_StencilComp", (int)CompareFunction.Equal);
             }
+            for (int x = 0; x < wallMaterials.Count; x++)
+            {
+                wallMaterials[x].SetInt("_StencilComp", (int)CompareFunction.Equal);
+            }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        colliderExited = true;
         text.text = "Exited";
     }
 

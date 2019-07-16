@@ -17,7 +17,7 @@ Shader "Unlit/SponzaShader"
 		{
             Stencil{
                 Ref 1
-                Comp [_StencilComp]
+                //Comp [_StencilComp]
             
             }
 			CGPROGRAM

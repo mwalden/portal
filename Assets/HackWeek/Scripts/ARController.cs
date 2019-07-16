@@ -6,9 +6,9 @@ using GoogleARCore;
 
 
 #if UNITY_EDITOR
-
-#endif
 using input = GoogleARCore.InstantPreviewInput;
+#endif
+
 public class ARController : MonoBehaviour
 {
     private List<TrackedPlane> planes = new List<TrackedPlane>();
@@ -24,7 +24,8 @@ public class ARController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      
+        if (enabledDoor)
+            return;
 
 
         if (!Session.Status.Equals(SessionStatus.Tracking))
@@ -46,6 +47,7 @@ public class ARController : MonoBehaviour
 
         if (Frame.Raycast(touch.position.x,touch.position.y, TrackableHitFlags.PlaneWithinPolygon,out hit))
         {
+
             enabledDoor = true;
             door.SetActive(true);
 

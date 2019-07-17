@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/hackweek3.unity
     guid: ba5b70b3283f64dafbad1b2d9e968ae0
+  - enabled: 0
+    path: Assets/hackweek2.unity
+    guid: 258aa90ca48764fe3973ab5b7bd3fd8f
   m_configObjects: {}

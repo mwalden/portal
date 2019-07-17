@@ -9,8 +9,6 @@ public class PortalManager : MonoBehaviour
 
     public GameObject mainCamera;
     public GameObject sponza;
-    public Text text;
-    public Text distance;
     public Material[] sponzaMaterials;
     public List<Material> wallMaterials;
     public GameObject[] walls;
@@ -19,19 +17,18 @@ public class PortalManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        sponzaMaterials = sponza.GetComponent<Renderer>().sharedMaterials;
-        foreach (GameObject go in walls)
-        {
-            Material[] material = go.GetComponent<Renderer>().sharedMaterials;
-            wallMaterials.AddRange(material);
-        }
+        //sponzaMaterials = sponza.GetComponent<Renderer>().sharedMaterials;
+        //foreach (GameObject go in walls)
+        //{
+        //    Material[] material = go.GetComponent<Renderer>().sharedMaterials;
+        //    wallMaterials.AddRange(material);
+        //}
 
     }
 
     private void Update()
     {
         Vector3 camPositionInPortalSpace = transform.InverseTransformPoint(mainCamera.transform.position);
-        distance.text = camPositionInPortalSpace.y.ToString() + " :: " + sponzaMaterials[0].GetInt("_StencilComp") + " :: " + enabledCalled;
     }
 
     private void OnEnable()
@@ -54,11 +51,6 @@ public class PortalManager : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter(Collider other)
-    {
-            text.text = "Entered";
-    }
-
     // Update is called once per frame
     void OnTriggerStay(Collider col)
     {
@@ -67,7 +59,6 @@ public class PortalManager : MonoBehaviour
         {
             if (!world.activeSelf)
                 world.SetActive(true);
-            text.text = camPositionInPortalSpace.y + " :: setting to Always" + sponzaMaterials[0].GetInt("_StencilComp");
             //disable stencil test
             //for (int x = 0; x < sponzaMaterials.Length;x++)
             //    sponzaMaterials[x].SetInt("_StencilComp", (int)CompareFunction.Always);
@@ -80,7 +71,6 @@ public class PortalManager : MonoBehaviour
         }
         else
         {
-            text.text = camPositionInPortalSpace.y + " :: setting to equal" + sponzaMaterials[0].GetInt("_StencilComp");
             //for (int x = 0; x < sponzaMaterials.Length; x++)
             //{
             //    sponzaMaterials[x].SetInt("_StencilComp", (int)CompareFunction.Equal);
@@ -92,10 +82,6 @@ public class PortalManager : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        text.text = "Exited";
-    }
 
 
 }

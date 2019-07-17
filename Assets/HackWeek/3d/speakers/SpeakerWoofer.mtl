@@ -1,0 +1,93 @@
+# MTL written from D:\PROJECT 3D Asset Store\Electronic\SpeakerWoofer\SpeakerWoofer.obj
+newmtl BackCase
+Kd 0.8 0.8 0.8
+Ns 256
+d 1
+illum 2
+Ka 0 0 0
+Ks 0.2 0.2 0.2
+map_Kd D:\PROJECT 3D Asset Store\Electronic\SpeakerWoofer\Speaker copy.jpg
+map_Ka D:\PROJECT 3D Asset Store\Electronic\SpeakerWoofer\Texture copy.tif
+newmtl BlackMagnet
+Kd 0.0176656 0.0176656 0.0176656
+Ns 256
+d 1
+illum 2
+Ka 0 0 0
+Ks 0 0 0
+map_Ka D:\PROJECT 3D Asset Store\Electronic\SpeakerWoofer\Texture copy.tif
+newmtl Box
+Kd 0.0378549 0.0378549 0.0378549
+Ns 256
+d 1
+illum 2
+Ka 0 0 0
+Ks 0.2 0.2 0.2
+map_Ka D:\PROJECT 3D Asset Store\Electronic\SpeakerWoofer\Texture copy.tif
+newmtl Cover
+Kd 0.512303 0.512303 0.512303
+Ns 256
+d 1
+illum 2
+Ka 0 0 0
+Ks 0 0 0
+map_Ka D:\PROJECT 3D Asset Store\Electronic\SpeakerWoofer\Texture copy.tif
+newmtl CoverMembran
+Kd 0.0176656 0.0176656 0.0176656
+Ns 256
+d 1
+illum 2
+Ka 0 0 0
+Ks 0 0 0
+map_Kd D:\PROJECT 3D Asset Store\Electronic\SpeakerWoofer\Speaker copy.jpg
+map_Ka D:\PROJECT 3D Asset Store\Electronic\SpeakerWoofer\Texture copy.tif
+newmtl Default
+map_Ka D:\PROJECT 3D Asset Store\Electronic\SpeakerWoofer\Texture copy.tif
+newmtl Glasses
+Kd 0.8 0.8 0.8
+Ns 256
+d 0.2
+illum 2
+Ka 0 0 0
+Ks 0.2 0.2 0.2
+map_Ka D:\PROJECT 3D Asset Store\Electronic\SpeakerWoofer\Texture copy.tif
+newmtl InJack
+Kd 0.426498 0.426498 0.426498
+Ns 256
+d 1
+illum 2
+Ka 0 0 0
+Ks 0.2 0.2 0.2
+map_Ka D:\PROJECT 3D Asset Store\Electronic\SpeakerWoofer\Texture copy.tif
+newmtl Iron
+Kd 0 0 0
+Ns 256
+d 1
+illum 2
+Ka 0 0 0
+Ks 0.2 0.2 0.2
+map_Ka D:\PROJECT 3D Asset Store\Electronic\SpeakerWoofer\Texture copy.tif
+newmtl Jack
+Kd 0.582965 0.582965 0.582965
+Ns 256
+d 1
+illum 2
+Ka 0 0 0
+Ks 0.2 0.2 0.2
+map_Ka D:\PROJECT 3D Asset Store\Electronic\SpeakerWoofer\Texture copy.tif
+newmtl Light
+Kd 0.2 0.2 0.2
+Ns 256
+d 1
+illum 2
+Ka 0 0 0
+Ks 0.2 0.2 0.2
+map_Ka D:\PROJECT 3D Asset Store\Electronic\SpeakerWoofer\Texture copy.tif
+newmtl Rubber_Membran
+Kd 0.0273842 0.0284915 0.0184828
+Ns 256
+d 1
+illum 2
+Ka 0 0 0
+Ks 0 0 0
+map_Ka D:\PROJECT 3D Asset Store\Electronic\SpeakerWoofer\Texture copy.tif

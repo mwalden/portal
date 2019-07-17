@@ -14,20 +14,17 @@ public class RotateBetweenTwoPoints : MonoBehaviour
 
     private Quaternion startRotation;
     public  float progress = 0;
-    // Start is called before the first frame update
     void Start()
     {
         start = transform.rotation;
         end = Quaternion.Euler(targetEulerAngles);
     }
 
-    // Update is called once per frame
     void Update()
     {
         transform.rotation = Quaternion.Lerp(start, end, progress);
 
         progress += spd * Time.fixedDeltaTime;
-        //if you reached the end of the pass
         if (progress >= 1)
         {
             reverse = true;
@@ -35,6 +32,5 @@ public class RotateBetweenTwoPoints : MonoBehaviour
             end = start;
             start = transform.rotation;
         }
-        //go back to the start
     }
 }

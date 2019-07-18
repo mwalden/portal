@@ -13,7 +13,6 @@ public class Moonwalk : MonoBehaviour
     public bool walking;
     public Quaternion currentRotation;
     public Quaternion destinationRotation;
-    public Text text;
     public bool backwards;
     // Start is called before the first frame update
     void Start()
@@ -25,7 +24,6 @@ public class Moonwalk : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        text.text = transform.localPosition.ToString();
         //walk to direction
         if (walking)
         {

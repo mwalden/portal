@@ -14,6 +14,8 @@ public class PortalManager : MonoBehaviour
     public GameObject[] walls;
     public GameObject  world;
     public bool enabledCalled;
+
+    public AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
@@ -58,17 +60,20 @@ public class PortalManager : MonoBehaviour
         if (camPositionInPortalSpace.y < .5f )
         {
             if (!world.activeSelf)
+            {
                 world.SetActive(true);
-            //disable stencil test
-            //for (int x = 0; x < sponzaMaterials.Length;x++)
-            //    sponzaMaterials[x].SetInt("_StencilComp", (int)CompareFunction.Always);
+                audioSource.volume = 1;
+            }
+                //disable stencil test
+                //for (int x = 0; x < sponzaMaterials.Length;x++)
+                //    sponzaMaterials[x].SetInt("_StencilComp", (int)CompareFunction.Always);
 
-            //for (int x = 0; x < wallMaterials.Count; x++)
-            //{
-            //    wallMaterials[x].SetInt("_StencilComp", (int)CompareFunction.Always);
-            //}
+                //for (int x = 0; x < wallMaterials.Count; x++)
+                //{
+                //    wallMaterials[x].SetInt("_StencilComp", (int)CompareFunction.Always);
+                //}
 
-        }
+            }
         else
         {
             //for (int x = 0; x < sponzaMaterials.Length; x++)

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Moonwalk : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class Moonwalk : MonoBehaviour
     public bool walking;
     public Quaternion currentRotation;
     public Quaternion destinationRotation;
-
+    public Text text;
     public bool backwards;
     // Start is called before the first frame update
     void Start()
@@ -24,10 +25,11 @@ public class Moonwalk : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        text.text = transform.localPosition.ToString();
         //walk to direction
         if (walking)
         {
-            transform.position = Vector3.Lerp(start, end, progress);
+            transform.localPosition = Vector3.Lerp(start, end, progress);
 
             progress += spd * Time.fixedDeltaTime;
             //if you reached the end of the pass

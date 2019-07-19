@@ -16,13 +16,13 @@ public class RotateBetweenTwoPoints : MonoBehaviour
     public  float progress = 0;
     void Start()
     {
-        start = transform.rotation;
+        start = transform.localRotation;
         end = Quaternion.Euler(targetEulerAngles);
     }
 
     void Update()
     {
-        transform.rotation = Quaternion.Lerp(start, end, progress);
+        transform.localRotation = Quaternion.Lerp(start, end, progress);
 
         progress += spd * Time.fixedDeltaTime;
         if (progress >= 1)
@@ -30,7 +30,7 @@ public class RotateBetweenTwoPoints : MonoBehaviour
             reverse = true;
             progress = 0;
             end = start;
-            start = transform.rotation;
+            start = transform.localRotation;
         }
     }
 }

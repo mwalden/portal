@@ -37,28 +37,52 @@ public class AudioScript : MonoBehaviour
 
     public Light[] spotLights;
 
+    public GameObject[] particleSystems;
 
+    public bool particleSystemsOn;
+
+
+    public float timeBeforeParticleSystems;
     public float timeBeforeSpotLights;
     public float timeBeforeAreaLights;
+    public float timeBeforeJungle;
 
 
     // Start is called before the first frame update
     void Start()
     {
         source.clip = clips[0];
-        foreach (Light l in spotLights)
-        {
-            l.gameObject.SetActive(false);
-
-        }
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        triggerText.text = canChangeTrack.ToString() + " :: " + timeRemainingBetweenSongs + " :: " + idx;
+        triggerText.text = canChangeTrack.ToString() + " :: " + timeRemainingBetweenSongs + " :: " + timeBeforeSpotLights;
         if (startedPlayingJungle)
         {
+            if (timeBeforeJungle > 0)
+            {
+                timeBeforeJungle -= Time.deltaTime;
+                return;
+            }
+            if (!source.isPlaying)
+                source.Play(); 
+            if (timeBeforeParticleSystems > 0)
+            {
+                timeBeforeParticleSystems -= Time.deltaTime;
+                return;
+            }
+            if (!particleSystemsOn)
+            {
+                particleSystemsOn = true;
+                foreach (GameObject go in particleSystems)
+                {
+                    go.SetActive(true);
+                }
+            }
+
+
             if (timeBeforeSpotLights > 0)
             {
                 timeBeforeSpotLights -= Time.deltaTime;
@@ -102,24 +126,23 @@ public class AudioScript : MonoBehaviour
         if (Input.touchCount == 1 && timeRemainingBetweenSongs < 0 && canChangeTrack)
         {
 
-
-
             if (clips.Length - 1 > idx)
             {
                 timeRemainingBetweenSongs = minPauseBetweenSongs;
                 idx++;
+                source.Stop();
                 source.clip = clips[idx];
-                source.Play();
+                if (clips[idx].Equals(clips[3]))
+                {
+                    playJungle = true;
+                }else
+                    source.Play();
             }
             if (clips[idx].Equals(clips[3]))
             {
                 playJungle = true;
             }
         }
-
-
-
-
 
         if (started)
             return;

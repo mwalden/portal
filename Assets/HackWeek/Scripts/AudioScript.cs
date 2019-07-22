@@ -41,6 +41,9 @@ public class AudioScript : MonoBehaviour
 
     public bool particleSystemsOn;
 
+    public GameObject[] dancers;
+    public GameObject gunsAndRoses;
+
 
     public float timeBeforeParticleSystems;
     public float timeBeforeSpotLights;
@@ -61,6 +64,12 @@ public class AudioScript : MonoBehaviour
         triggerText.text = canChangeTrack.ToString() + " :: " + timeRemainingBetweenSongs + " :: " + timeBeforeSpotLights;
         if (startedPlayingJungle)
         {
+
+            foreach (GameObject go in dancers)
+            {
+                go.SetActive(true);
+            }
+            gunsAndRoses.SetActive(true);
             if (timeBeforeJungle > 0)
             {
                 timeBeforeJungle -= Time.deltaTime;
